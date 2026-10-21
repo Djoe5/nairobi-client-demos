@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIT N FINE KICKS | Nairobi Premier Sneaker Plug</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #09090b; color: #f4f4f5; }
+    .font-tech { font-family: 'Space Grotesk', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#09090b] text-zinc-100 min-h-screen pb-28 selection:bg-amber-400 selection:text-black">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-amber-400 text-black text-xs font-black tracking-wider py-1.5 px-4 text-center font-tech uppercase">
+    ⚡ SAME-DAY RIDER DISPATCH WITHIN NAIROBI • COUNTRYWIDE COURIER (24H)
+  </div>
+
+  <!-- Header -->
+  <header class="border-b border-zinc-800 bg-zinc-950/80 backdrop-blur sticky top-0 z-40 px-4 py-3">
+    <div class="max-w-md mx-auto flex items-center justify-between">
+      <div>
+        <h1 class="text-xl font-black font-tech tracking-tight text-white flex items-center gap-1.5">
+          <span>FIT N FINE</span>
+          <span class="text-amber-400">KICKS</span>
+        </h1>
+        <p class="text-[10px] text-zinc-400 font-medium">Stanbank House, Moi Ave, Nairobi CBD</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="https://wa.me/254790373643" target="_blank" class="px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>WhatsApp Plug</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Filter Category Badges -->
+  <div class="max-w-md mx-auto px-4 py-3 flex gap-2 overflow-x-auto no-scrollbar">
+    <button class="px-3 py-1 rounded-full bg-amber-400 text-black text-xs font-bold shrink-0">All Kicks (Fresh Drop)</button>
+    <button class="px-3 py-1 rounded-full bg-zinc-800 text-zinc-300 text-xs font-semibold shrink-0">Air Jordan 4</button>
+    <button class="px-3 py-1 rounded-full bg-zinc-800 text-zinc-300 text-xs font-semibold shrink-0">Nike Dunk Low</button>
+    <button class="px-3 py-1 rounded-full bg-zinc-800 text-zinc-300 text-xs font-semibold shrink-0">Adidas Samba</button>
+  </div>
+
+  <!-- Sneaker Grid -->
+  <main class="max-w-md mx-auto px-4 space-y-4 mt-2">
+
+    <!-- Sneaker Card 1 -->
+    <div class="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-4 relative overflow-hidden group">
+      <div class="relative rounded-xl overflow-hidden bg-zinc-950 mb-3 aspect-[4/3] flex items-center justify-center">
+        <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=600&q=80" alt="Jordan 4 Military Blue" class="object-cover w-full h-full group-hover:scale-105 transition duration-300">
+        <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-amber-400 text-black text-[10px] font-black uppercase font-tech">HOT SELLER</span>
+      </div>
+      <div class="flex justify-between items-start mb-2">
+        <div>
+          <h2 class="font-bold text-base text-white">Air Jordan 4 Retro 'Military Blue'</h2>
+          <p class="text-xs text-zinc-400">OG Colorway • Premium Leather</p>
+        </div>
+        <div class="text-right">
+          <div class="text-base font-black font-tech text-amber-400">KES 6,500</div>
+          <div class="text-[10px] text-zinc-500 line-through">KES 8,000</div>
+        </div>
+      </div>
+
+      <!-- Size Selector -->
+      <div class="mb-3">
+        <span class="text-[11px] font-semibold text-zinc-400 block mb-1.5">Select EU Size:</span>
+        <div class="grid grid-cols-6 gap-1.5" id="sizes_1">
+          <button onclick="selectSize(this, 1)" class="py-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-xs font-bold hover:border-amber-400">40</button>
+          <button onclick="selectSize(this, 1)" class="py-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-xs font-bold hover:border-amber-400">41</button>
+          <button onclick="selectSize(this, 1)" class="py-1.5 rounded-lg border border-amber-400 bg-amber-400/20 text-amber-300 text-xs font-bold">42</button>
+          <button onclick="selectSize(this, 1)" class="py-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-xs font-bold hover:border-amber-400">43</button>
+          <button onclick="selectSize(this, 1)" class="py-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-xs font-bold hover:border-amber-400">44</button>
+          <button onclick="selectSize(this, 1)" class="py-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-xs font-bold hover:border-amber-400">45</button>
+        </div>
+      </div>
+
+      <!-- Instant Order Button -->
+      <button onclick="orderSneaker('Air Jordan 4 Military Blue', 6500, 1)" class="w-full py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-extrabold text-sm flex items-center justify-center gap-2 font-tech shadow-lg shadow-amber-400/20 transition">
+        <span>⚡ ORDER VIA WHATSAPP (KES 6,500)</span>
+      </button>
+    </div>
+
+    <!-- Sneaker Card 2 -->
+    <div class="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-4 relative overflow-hidden group">
+      <div class="relative rounded-xl overflow-hidden bg-zinc-950 mb-3 aspect-[4/3] flex items-center justify-center">
+        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=600&q=80" alt="Nike Dunk Low Panda" class="object-cover w-full h-full group-hover:scale-105 transition duration-300">
+        <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-emerald-500 text-black text-[10px] font-black uppercase font-tech">IN STOCK</span>
+      </div>
+      <div class="flex justify-between items-start mb-2">
+        <div>
+          <h2 class="font-bold text-base text-white">Nike Dunk Low 'Panda' Black/White</h2>
+          <p class="text-xs text-zinc-400">Clean Everyday Classic</p>
+        </div>
+        <div class="text-right">
+          <div class="text-base font-black font-tech text-amber-400">KES 4,800</div>
+          <div class="text-[10px] text-zinc-500 line-through">KES 5,500</div>
+        </div>
+      </div>
+
+      <!-- Size Selector -->
+      <div class="mb-3">
+        <span class="text-[11px] font-semibold text-zinc-400 block mb-1.5">Select EU Size:</span>
+        <div class="grid grid-cols-6 gap-1.5" id="sizes_2">
+          <button onclick="selectSize(this, 2)" class="py-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-xs font-bold hover:border-amber-400">39</button>
+          <button onclick="selectSize(this, 2)" class="py-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-xs font-bold hover:border-amber-400">40</button>
+          <button onclick="selectSize(this, 2)" class="py-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-xs font-bold hover:border-amber-400">41</button>
+          <button onclick="selectSize(this, 2)" class="py-1.5 rounded-lg border border-amber-400 bg-amber-400/20 text-amber-300 text-xs font-bold">42</button>
+          <button onclick="selectSize(this, 2)" class="py-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-xs font-bold hover:border-amber-400">43</button>
+          <button onclick="selectSize(this, 2)" class="py-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-xs font-bold hover:border-amber-400">44</button>
+        </div>
+      </div>
+
+      <!-- Instant Order Button -->
+      <button onclick="orderSneaker('Nike Dunk Low Panda', 4800, 2)" class="w-full py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-extrabold text-sm flex items-center justify-center gap-2 font-tech shadow-lg shadow-amber-400/20 transition">
+        <span>⚡ ORDER VIA WHATSAPP (KES 4,800)</span>
+      </button>
+    </div>
+
+    <!-- Sneaker Card 3 -->
+    <div class="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-4 relative overflow-hidden group">
+      <div class="relative rounded-xl overflow-hidden bg-zinc-950 mb-3 aspect-[4/3] flex items-center justify-center">
+        <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=600&q=80" alt="Travis Scott Jordan 1 Low" class="object-cover w-full h-full group-hover:scale-105 transition duration-300">
+        <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-rose-500 text-white text-[10px] font-black uppercase font-tech">LIMITED DROP</span>
+      </div>
+      <div class="flex justify-between items-start mb-2">
+        <div>
+          <h2 class="font-bold text-base text-white">Travis Scott x AJ1 Low 'Reverse Mocha'</h2>
+          <p class="text-xs text-zinc-400">Reverse Swoosh • Includes Extra Laces</p>
+        </div>
+        <div class="text-right">
+          <div class="text-base font-black font-tech text-amber-400">KES 7,500</div>
+          <div class="text-[10px] text-zinc-500 line-through">KES 9,000</div>
+        </div>
+      </div>
+
+      <!-- Size Selector -->
+      <div class="mb-3">
+        <span class="text-[11px] font-semibold text-zinc-400 block mb-1.5">Select EU Size:</span>
+        <div class="grid grid-cols-6 gap-1.5" id="sizes_3">
+          <button onclick="selectSize(this, 3)" class="py-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-xs font-bold hover:border-amber-400">41</button>
+          <button onclick="selectSize(this, 3)" class="py-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-xs font-bold hover:border-amber-400">42</button>
+          <button onclick="selectSize(this, 3)" class="py-1.5 rounded-lg border border-amber-400 bg-amber-400/20 text-amber-300 text-xs font-bold">43</button>
+          <button onclick="selectSize(this, 3)" class="py-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-xs font-bold hover:border-amber-400">44</button>
+          <button onclick="selectSize(this, 3)" class="py-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-xs font-bold hover:border-amber-400">45</button>
+        </div>
+      </div>
+
+      <!-- Instant Order Button -->
+      <button onclick="orderSneaker('Travis Scott AJ1 Reverse Mocha', 7500, 3)" class="w-full py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-extrabold text-sm flex items-center justify-center gap-2 font-tech shadow-lg shadow-amber-400/20 transition">
+        <span>⚡ ORDER VIA WHATSAPP (KES 7,500)</span>
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Sticky Bottom Trust Bar -->
+  <div class="fixed bottom-0 left-0 right-0 border-t border-zinc-800 bg-zinc-950/95 backdrop-blur py-3 px-4 z-50">
+    <div class="max-w-md mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2 text-xs">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="text-zinc-300 font-semibold">14 Pairs Dispatched Today</span>
+      </div>
+      <a href="https://wa.me/254790373643?text=Hey%20Fit%20N%20Fine%20Kicks!%20I'm%20looking%20for%20available%20sneakers%20today" class="text-xs font-bold text-amber-400 underline font-tech">Chat Direct ↗</a>
+    </div>
+  </div>
+
+  <script>
+    const selectedSizes = { 1: '42', 2: '42', 3: '43' };
+
+    function selectSize(btn, cardId) {
+      const parent = btn.parentElement;
+      parent.querySelectorAll('button').forEach(b => {
+        b.className = "py-1.5 rounded-lg border border-zinc-700 bg-zinc-800 text-xs font-bold hover:border-amber-400";
+      });
+      btn.className = "py-1.5 rounded-lg border border-amber-400 bg-amber-400/20 text-amber-300 text-xs font-bold";
+      selectedSizes[cardId] = btn.innerText.trim();
+    }
+
+    function orderSneaker(name, price, cardId) {
+      const size = selectedSizes[cardId] || "42";
+      const phone = "254790373643"; // Fit N Fine Kicks WhatsApp
+      const text = encodeURIComponent(
+        `Hi Fit N Fine Kicks! 🔥\n` +
+        `I want to order from your mobile catalog:\n\n` +
+        `👟 Item: ${name}\n` +
+        `📏 Size: EU ${size}\n` +
+        `💰 Price: KES ${price.toLocaleString()}\n\n` +
+        `Is this size ready for immediate delivery/pickup at Stanbank House?`
+      );
+      window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+    }
+  </script>
+</body>
+</html>
