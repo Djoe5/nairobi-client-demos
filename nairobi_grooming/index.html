@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE NOIR BARBERSHOP & SPA | Premium Nairobi Grooming</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #08090c; color: #f1f5f9; }
+    .font-luxury { font-family: 'Playfair Display', serif; }
+    .font-tech { font-family: 'Space Grotesk', monospace; }
+  </style>
+</head>
+<body class="bg-[#08090c] text-slate-100 min-h-screen pb-28 selection:bg-amber-400 selection:text-black">
+
+  <!-- Top Banner -->
+  <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 text-black text-xs font-black tracking-wider py-1.5 px-4 text-center font-tech uppercase">
+    ✂️ KILIMANI & WESTLANDS VIP GROOMING • COMPLIMENTARY ESPRESSO & WHISKEY
+  </div>
+
+  <!-- Header -->
+  <header class="border-b border-zinc-800 bg-zinc-950/80 backdrop-blur sticky top-0 z-50 px-4 py-3.5">
+    <div class="max-w-md mx-auto flex items-center justify-between">
+      <div>
+        <h1 class="text-xl font-bold font-luxury tracking-wide text-amber-200">NOIR GROOMING</h1>
+        <p class="text-[10px] text-zinc-400 font-medium">Lenana Road, Kilimani • Nairobi</p>
+      </div>
+      <div class="px-2.5 py-1 rounded-full bg-amber-400/10 text-amber-300 border border-amber-400/30 text-xs font-bold font-tech flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+        <span>Slots Open Today</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Photo Banner -->
+  <div class="max-w-md mx-auto px-4 pt-4">
+    <div class="aspect-[16/9] rounded-2xl overflow-hidden bg-zinc-900 relative">
+      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80" alt="Barbershop Lounge" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-4">
+        <div>
+          <span class="text-[10px] font-tech text-amber-400 uppercase tracking-widest font-bold">EXECUTIVE APPOINTMENT SYSTEM</span>
+          <h2 class="text-xl font-bold text-white font-luxury">Zero Waiting Time. Select & Book.</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Flow -->
+  <main class="max-w-md mx-auto px-4 mt-5 space-y-4">
+
+    <!-- Step 1: Select Service -->
+    <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800">
+      <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 font-tech mb-3">1. Select Service</h3>
+      
+      <div class="space-y-2.5">
+        <label class="flex items-center justify-between p-3 rounded-xl border border-amber-400 bg-amber-400/10 cursor-pointer service-option">
+          <div class="flex items-center gap-3">
+            <input type="radio" name="service" value="Executive Cut & Hot Towel Beard Trim" data-price="2500" checked onchange="updateSummary()" class="text-amber-400 focus:ring-0">
+            <div>
+              <div class="text-sm font-bold text-white">Executive Fade & Beard Sculpt</div>
+              <div class="text-[11px] text-zinc-400">Includes organic wash, hot towel & steam</div>
+            </div>
+          </div>
+          <span class="text-sm font-black font-tech text-amber-300">KES 2,500</span>
+        </label>
+
+        <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-800 bg-zinc-950/60 cursor-pointer service-option">
+          <div class="flex items-center gap-3">
+            <input type="radio" name="service" value="Classic Haircut & Wash" data-price="1500" onchange="updateSummary()" class="text-amber-400 focus:ring-0">
+            <div>
+              <div class="text-sm font-bold text-white">Classic Haircut & Wash</div>
+              <div class="text-[11px] text-zinc-400">Precision taper or fade + styling</div>
+            </div>
+          </div>
+          <span class="text-sm font-black font-tech text-amber-300">KES 1,500</span>
+        </label>
+
+        <label class="flex items-center justify-between p-3 rounded-xl border border-zinc-800 bg-zinc-950/60 cursor-pointer service-option">
+          <div class="flex items-center gap-3">
+            <input type="radio" name="service" value="VIP Full Grooming & Deep Facial" data-price="4500" onchange="updateSummary()" class="text-amber-400 focus:ring-0">
+            <div>
+              <div class="text-sm font-bold text-white">VIP Full Grooming & Deep Facial</div>
+              <div class="text-[11px] text-zinc-400">Cut + Beard + Charcoal peel-off facial + manicure</div>
+            </div>
+          </div>
+          <span class="text-sm font-black font-tech text-amber-300">KES 4,500</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Step 2: Choose Stylist / Barber -->
+    <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800">
+      <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 font-tech mb-3">2. Choose Your Barber</h3>
+      <div class="grid grid-cols-3 gap-2">
+        <button onclick="selectBarber(this, 'Master Barber Eric')" class="p-2.5 rounded-xl border border-amber-400 bg-amber-400/20 text-center barber-btn">
+          <div class="text-lg">💈</div>
+          <div class="text-xs font-bold text-white mt-1">Eric</div>
+          <div class="text-[9px] text-amber-400">Master Barber</div>
+        </button>
+        <button onclick="selectBarber(this, 'Stylist Brian')" class="p-2.5 rounded-xl border border-zinc-800 bg-zinc-950 text-center barber-btn">
+          <div class="text-lg">✂️</div>
+          <div class="text-xs font-bold text-white mt-1">Brian</div>
+          <div class="text-[9px] text-zinc-400">Beard Specialist</div>
+        </button>
+        <button onclick="selectBarber(this, 'First Available')" class="p-2.5 rounded-xl border border-zinc-800 bg-zinc-950 text-center barber-btn">
+          <div class="text-lg">⚡</div>
+          <div class="text-xs font-bold text-white mt-1">Any</div>
+          <div class="text-[9px] text-emerald-400">Fastest Seat</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 3: Select Time Slot -->
+    <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800">
+      <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 font-tech mb-3">3. Preferred Time Today</h3>
+      <div class="grid grid-cols-4 gap-2" id="timeSlots">
+        <button onclick="selectTime(this, '11:00 AM')" class="py-2 rounded-lg border border-zinc-800 bg-zinc-950 text-xs font-bold text-zinc-300 time-btn">11:00 AM</button>
+        <button onclick="selectTime(this, '01:00 PM')" class="py-2 rounded-lg border border-amber-400 bg-amber-400/20 text-xs font-bold text-amber-300 time-btn">01:00 PM</button>
+        <button onclick="selectTime(this, '03:30 PM')" class="py-2 rounded-lg border border-zinc-800 bg-zinc-950 text-xs font-bold text-zinc-300 time-btn">03:30 PM</button>
+        <button onclick="selectTime(this, '05:30 PM')" class="py-2 rounded-lg border border-zinc-800 bg-zinc-950 text-xs font-bold text-zinc-300 time-btn">05:30 PM</button>
+      </div>
+    </div>
+
+    <!-- Booking Summary & WhatsApp Trigger -->
+    <div class="p-5 rounded-2xl bg-zinc-950 border border-amber-400/40 shadow-xl">
+      <div class="flex justify-between items-baseline mb-4">
+        <div>
+          <span class="text-[10px] font-tech text-zinc-400 uppercase">Estimated Total</span>
+          <div class="text-2xl font-black font-tech text-amber-300" id="totalPrice">KES 2,500</div>
+        </div>
+        <div class="text-right text-xs text-zinc-400">
+          <span id="selectedBarberText" class="text-white font-semibold">Master Barber Eric</span><br>
+          <span id="selectedTimeText" class="text-amber-400">01:00 PM Today</span>
+        </div>
+      </div>
+
+      <button onclick="confirmBooking()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-black font-black text-sm font-tech tracking-wide transition flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20">
+        <span>CONFIRM & BOOK VIA WHATSAPP</span>
+      </button>
+    </div>
+
+  </main>
+
+  <script>
+    let currentService = "Executive Cut & Hot Towel Beard Trim";
+    let currentPrice = 2500;
+    let currentBarber = "Master Barber Eric";
+    let currentTime = "01:00 PM";
+
+    function updateSummary() {
+      const selected = document.querySelector('input[name="service"]:checked');
+      currentService = selected.value;
+      currentPrice = parseInt(selected.getAttribute('data-price'));
+      document.getElementById('totalPrice').innerText = "KES " + currentPrice.toLocaleString();
+    }
+
+    function selectBarber(btn, name) {
+      document.querySelectorAll('.barber-btn').forEach(b => {
+        b.className = "p-2.5 rounded-xl border border-zinc-800 bg-zinc-950 text-center barber-btn";
+      });
+      btn.className = "p-2.5 rounded-xl border border-amber-400 bg-amber-400/20 text-center barber-btn";
+      currentBarber = name;
+      document.getElementById('selectedBarberText').innerText = name;
+    }
+
+    function selectTime(btn, t) {
+      document.querySelectorAll('.time-btn').forEach(b => {
+        b.className = "py-2 rounded-lg border border-zinc-800 bg-zinc-950 text-xs font-bold text-zinc-300 time-btn";
+      });
+      btn.className = "py-2 rounded-lg border border-amber-400 bg-amber-400/20 text-xs font-bold text-amber-300 time-btn";
+      currentTime = t;
+      document.getElementById('selectedTimeText').innerText = t + " Today";
+    }
+
+    function confirmBooking() {
+      const text = encodeURIComponent(
+        `Hi Noir Grooming! ✂️\n` +
+        `I would like to book an appointment:\n\n` +
+        `💈 Service: ${currentService}\n` +
+        `👤 Barber: ${currentBarber}\n` +
+        `⏰ Time: ${currentTime}\n` +
+        `💰 Total: KES ${currentPrice.toLocaleString()}\n\n` +
+        `Please confirm if this slot is open for me!`
+      );
+      window.open(`https://wa.me/254713735161?text=${text}`, '_blank');
+    }
+  </script>
+</body>
+</html>
