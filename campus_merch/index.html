@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOOD DISTRICT B2B | Campus & Corporate Custom Merch Engine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050608; color: #f1f5f9; }
+    .font-tech { font-family: 'Space Grotesk', monospace; }
+  </style>
+</head>
+<body class="bg-[#050608] text-slate-100 min-h-screen pb-24 selection:bg-amber-400 selection:text-black">
+
+  <!-- Top Banner -->
+  <div class="bg-amber-400 text-black text-xs font-black tracking-wider py-1.5 px-4 text-center font-tech uppercase">
+    🎓 CAMPUS GUILDS • LAW & MEDICAL SOCIETIES • CORPORATE TECH OFFSITES (5-DAY DISPATCH)
+  </div>
+
+  <!-- Header -->
+  <header class="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur sticky top-0 z-50 px-4 py-3.5">
+    <div class="max-w-md mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-amber-400 flex items-center justify-center font-black text-black font-tech text-base">
+          H
+        </div>
+        <div>
+          <h1 class="text-lg font-black font-tech tracking-tight text-white leading-none">HOOD<span class="text-amber-400">BATCH</span></h1>
+          <p class="text-[10px] text-zinc-400 font-mono">B2B Custom Apparel Wholesale</p>
+        </div>
+      </div>
+      <div class="px-2.5 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-bold font-tech">
+        Min: 20 Pieces
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-md mx-auto px-4 mt-4 space-y-4">
+
+    <!-- Hero Card -->
+    <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 text-center">
+      <span class="text-[10px] font-tech text-amber-400 uppercase tracking-widest font-bold">ZERO INVENTORY RISK</span>
+      <h2 class="text-xl font-extrabold text-white mt-1">Custom Hoodies & Tees For Your Organization</h2>
+      <p class="text-xs text-zinc-400 mt-1 max-w-xs mx-auto">
+        Strathmore, USIU, UoN, Daystar campus clubs & tech startups order in bulk with automated 60% M-Pesa deposit invoices.
+      </p>
+    </div>
+
+    <!-- Step 1: Select Garment -->
+    <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800">
+      <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 font-tech mb-3">1. Select Garment Type</h3>
+      <div class="grid grid-cols-2 gap-2.5" id="garmentGrid">
+        <button onclick="pickGarment(this, '400 GSM Heavyweight Hoodie', 2200)" class="p-3 rounded-xl border border-amber-400 bg-amber-400/10 text-left garment-btn">
+          <div class="text-xl mb-1">🧥</div>
+          <div class="text-xs font-bold text-white">400 GSM Hoodie</div>
+          <div class="text-[10px] text-amber-400 font-mono mt-0.5">KES 2,200 / unit</div>
+        </button>
+
+        <button onclick="pickGarment(this, '260 GSM Oversize Vintage Tee', 1400)" class="p-3 rounded-xl border border-zinc-800 bg-zinc-950 text-left garment-btn">
+          <div class="text-xl mb-1">👕</div>
+          <div class="text-xs font-bold text-white">260 GSM Heavy Tee</div>
+          <div class="text-[10px] text-zinc-400 font-mono mt-0.5">KES 1,400 / unit</div>
+        </button>
+
+        <button onclick="pickGarment(this, 'Custom Wool Varsity Jacket', 3600)" class="p-3 rounded-xl border border-zinc-800 bg-zinc-950 text-left garment-btn">
+          <div class="text-xl mb-1">🎓</div>
+          <div class="text-xs font-bold text-white">Varsity Jacket</div>
+          <div class="text-[10px] text-zinc-400 font-mono mt-0.5">KES 3,600 / unit</div>
+        </button>
+
+        <button onclick="pickGarment(this, 'Heavyweight Canvas Tote Bag', 650)" class="p-3 rounded-xl border border-zinc-800 bg-zinc-950 text-left garment-btn">
+          <div class="text-xl mb-1">👜</div>
+          <div class="text-xs font-bold text-white">Canvas Tote Bag</div>
+          <div class="text-[10px] text-zinc-400 font-mono mt-0.5">KES 650 / unit</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2: Quantity Slider -->
+    <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800">
+      <div class="flex justify-between items-center mb-2">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 font-tech">2. Order Quantity</h3>
+        <span class="text-sm font-black font-tech text-white" id="qtyDisplay">30 Pieces</span>
+      </div>
+      <input type="range" id="qtySlider" min="20" max="150" step="5" value="30" oninput="updateCalculation()" class="w-full accent-amber-400 cursor-pointer">
+      <div class="flex justify-between text-[10px] font-mono text-zinc-500 mt-1">
+        <span>20 pcs (Min)</span>
+        <span>50 pcs</span>
+        <span>100 pcs</span>
+        <span>150+ pcs</span>
+      </div>
+    </div>
+
+    <!-- Step 3: Print / Embroidery Type -->
+    <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800">
+      <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 font-tech mb-2">3. Branding Method</h3>
+      <div class="grid grid-cols-2 gap-2 text-xs">
+        <label class="flex items-center gap-2 p-2.5 rounded-xl border border-amber-400 bg-amber-400/10 cursor-pointer print-opt">
+          <input type="radio" name="branding" value="High-Density Screenprint" checked onchange="updateCalculation()" class="text-amber-400">
+          <span class="text-white font-medium">Puff / Screenprint</span>
+        </label>
+        <label class="flex items-center gap-2 p-2.5 rounded-xl border border-zinc-800 bg-zinc-950 cursor-pointer print-opt">
+          <input type="radio" name="branding" value="3D Embroidery Patch" onchange="updateCalculation()" class="text-amber-400">
+          <span class="text-white font-medium">3D Embroidery</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Cost Breakdown & Invoice Trigger -->
+    <div class="p-5 rounded-2xl bg-zinc-950 border border-amber-400/40 shadow-2xl space-y-3">
+      <div class="flex justify-between text-xs text-zinc-400">
+        <span>Selected Item:</span>
+        <span class="text-white font-semibold" id="summaryGarment">400 GSM Heavyweight Hoodie</span>
+      </div>
+      <div class="flex justify-between text-xs text-zinc-400">
+        <span>Unit Price:</span>
+        <span class="text-white font-mono" id="unitPriceDisplay">KES 2,200</span>
+      </div>
+      <div class="flex justify-between text-xs text-zinc-400">
+        <span>Production Turnaround:</span>
+        <span class="text-emerald-400 font-semibold font-mono">5 Business Days</span>
+      </div>
+
+      <div class="pt-3 border-t border-zinc-800 flex justify-between items-baseline">
+        <div>
+          <span class="text-[10px] font-tech text-zinc-400 uppercase">Total Batch Quote</span>
+          <div class="text-2xl font-black font-tech text-white" id="totalBatchDisplay">KES 66,000</div>
+        </div>
+        <div class="text-right">
+          <span class="text-[10px] font-tech text-amber-400 uppercase">60% Deposit to Start</span>
+          <div class="text-lg font-black font-tech text-amber-300" id="depositDisplay">KES 39,600</div>
+        </div>
+      </div>
+
+      <button onclick="requestBatchQuote()" class="w-full py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-black text-sm font-tech tracking-wide transition flex items-center justify-center gap-2 shadow-lg shadow-amber-400/20">
+        <span>REQUEST OFFICIAL INVOICE ON WHATSAPP</span>
+      </button>
+    </div>
+
+  </main>
+
+  <script>
+    let selectedGarment = "400 GSM Heavyweight Hoodie";
+    let baseUnitPrice = 2200;
+
+    function pickGarment(btn, name, price) {
+      document.querySelectorAll('.garment-btn').forEach(b => {
+        b.className = "p-3 rounded-xl border border-zinc-800 bg-zinc-950 text-left garment-btn";
+      });
+      btn.className = "p-3 rounded-xl border border-amber-400 bg-amber-400/10 text-left garment-btn";
+      selectedGarment = name;
+      baseUnitPrice = price;
+      document.getElementById('summaryGarment').innerText = name;
+      updateCalculation();
+    }
+
+    function updateCalculation() {
+      const qty = parseInt(document.getElementById('qtySlider').value);
+      document.getElementById('qtyDisplay').innerText = qty + " Pieces";
+
+      // Volume discount
+      let finalUnit = baseUnitPrice;
+      if (qty >= 50) finalUnit = Math.round(baseUnitPrice * 0.92);
+      if (qty >= 100) finalUnit = Math.round(baseUnitPrice * 0.85);
+
+      const total = qty * finalUnit;
+      const deposit = Math.round(total * 0.6);
+
+      document.getElementById('unitPriceDisplay').innerText = "KES " + finalUnit.toLocaleString();
+      document.getElementById('totalBatchDisplay').innerText = "KES " + total.toLocaleString();
+      document.getElementById('depositDisplay').innerText = "KES " + deposit.toLocaleString();
+    }
+
+    function requestBatchQuote() {
+      const qty = document.getElementById('qtySlider').value;
+      const total = document.getElementById('totalBatchDisplay').innerText;
+      const deposit = document.getElementById('depositDisplay').innerText;
+      const branding = document.querySelector('input[name="branding"]:checked').value;
+
+      const text = encodeURIComponent(
+        `Hi Hood District Batch Team! 🎓📦\n` +
+        `I want to place a custom batch order for our organization:\n\n` +
+        `👕 Item: ${selectedGarment}\n` +
+        `🔢 Quantity: ${qty} pieces\n` +
+        `🎨 Branding: ${branding}\n` +
+        `💰 Total Quote: ${total}\n` +
+        `💳 60% Deposit: ${deposit}\n\n` +
+        `Please generate our formal invoice and delivery schedule!`
+      );
+      window.open(`https://wa.me/254713735161?text=${text}`, '_blank');
+    }
+  </script>
+</body>
+</html>
