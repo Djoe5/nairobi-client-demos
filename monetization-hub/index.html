@@ -6,7 +6,7 @@
   <title>Creator & Marketer Monetization Hub — The Mind Glitch</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -49,18 +49,18 @@
       margin: 28px auto;
       padding: 0 28px;
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
+      grid-template-columns: 1.3fr 1.1fr;
       gap: 28px;
     }
 
     /* Target Cards */
     .section-title {
-      font-size: 16px;
-      font-weight: 700;
+      font-size: 15px;
+      font-weight: 800;
       color: #94a3b8;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -69,131 +69,146 @@
       background: #111827;
       border: 1px solid #1f2937;
       border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 16px;
-      transition: all 0.2s;
+      padding: 18px;
+      margin-bottom: 14px;
+      transition: all 0.2s ease;
     }
     .card:hover {
-      border-color: #10b981;
+      border-color: #3b82f6;
       transform: translateY(-2px);
     }
     .card-head {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .target-name {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 700;
       color: #fff;
     }
     .target-type {
-      font-size: 12.5px;
-      color: #10b981;
+      font-size: 12px;
+      color: #3b82f6;
       font-weight: 600;
     }
     .target-desc {
-      font-size: 13.5px;
-      color: #cbd5e1;
+      font-size: 13px;
+      color: #9ca3af;
       line-height: 1.5;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .card-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px dashed #1f2937;
-      padding-top: 12px;
-      font-size: 12.5px;
+      padding-top: 10px;
+      border-top: 1px solid #1f2937;
     }
     .deal-size {
-      color: #fbbf24;
+      font-size: 12px;
+      color: #10b981;
       font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
     }
     .action-btn {
-      background: #10b981;
-      color: #090d16;
-      border: none;
-      padding: 7px 14px;
+      background: #1f2937;
+      color: #f3f4f6;
+      border: 1px solid #374151;
+      padding: 6px 12px;
       border-radius: 6px;
-      font-weight: 700;
-      cursor: pointer;
       font-size: 12px;
-      transition: opacity 0.15s;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
     }
-    .action-btn:hover { opacity: 0.9; }
+    .action-btn:hover {
+      background: #2563eb;
+      color: #fff;
+      border-color: #2563eb;
+    }
 
-    /* Right: Quick Pitch Panel */
+    /* Pitch Copy Panel */
     .pitch-panel {
       background: #111827;
       border: 1px solid #1f2937;
       border-radius: 12px;
       padding: 24px;
-      position: sticky;
-      top: 24px;
       display: flex;
       flex-direction: column;
-      max-height: calc(100vh - 120px);
+      position: sticky;
+      top: 24px;
+      height: fit-content;
     }
     .tab-nav {
       display: flex;
-      gap: 8px;
-      border-bottom: 1px solid #1f2937;
-      padding-bottom: 12px;
+      gap: 6px;
       margin-bottom: 16px;
+      background: #090d16;
+      padding: 4px;
+      border-radius: 8px;
+      flex-wrap: wrap;
     }
     .tab-btn {
+      flex: 1;
+      min-width: 100px;
       background: transparent;
       border: none;
       color: #94a3b8;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 10px;
       border-radius: 6px;
       cursor: pointer;
-      transition: all 0.2s;
+      text-align: center;
+      transition: all 0.15s;
     }
     .tab-btn.active {
       background: #1f2937;
       color: #10b981;
     }
     .pitch-box {
-      flex: 1;
-      overflow-y: auto;
       background: #090d16;
       border: 1px solid #1f2937;
       border-radius: 8px;
-      padding: 16px;
+      padding: 18px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12.5px;
+      font-size: 12px;
       line-height: 1.6;
       color: #e2e8f0;
       white-space: pre-wrap;
+      max-height: 480px;
+      overflow-y: auto;
     }
     .copy-btn {
-      margin-top: 14px;
+      margin-top: 16px;
       background: #10b981;
-      color: #090d16;
+      color: #000;
       border: none;
       padding: 12px;
       border-radius: 8px;
+      font-size: 13px;
       font-weight: 800;
       cursor: pointer;
-      font-size: 14px;
-      width: 100%;
-      text-align: center;
-      transition: transform 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
     }
-    .copy-btn:hover { transform: scale(1.01); }
+    .copy-btn:hover {
+      background: #059669;
+      color: #fff;
+    }
 
-    /* Tool Shortcuts Bar */
+    /* Top Tools Bar */
     .tools-bar {
       grid-column: 1 / -1;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .tool-tile {
       background: #111827;
@@ -204,15 +219,16 @@
       justify-content: space-between;
       align-items: center;
     }
-    .tool-tile h3 { font-size: 14px; font-weight: 700; color: #fff; }
-    .tool-tile p { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+    .tool-tile h3 { font-size: 13px; font-weight: 700; color: #fff; }
+    .tool-tile p { font-size: 11px; color: #94a3b8; margin-top: 2px; }
     .status-tag {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       padding: 3px 8px;
       border-radius: 6px;
       background: rgba(16, 185, 129, 0.2);
       color: #10b981;
+      font-family: 'JetBrains Mono', monospace;
     }
   </style>
 </head>
@@ -223,7 +239,7 @@
     <h1>💸 Monetization & Creator Outreach Hub</h1>
   </div>
   <div>
-    <span class="badge">Pipeline Ready • 3 Live Engines</span>
+    <span class="badge">Pipeline Ready • 4 Operational Engines</span>
   </div>
 </header>
 
@@ -234,29 +250,36 @@
     <div class="tool-tile">
       <div>
         <h3>🍰 24/7 AI Order Agent</h3>
-        <p>Bakery, Clinic & Retail WhatsApp Bot</p>
+        <p>Bakery & Retail WhatsApp Bot</p>
       </div>
-      <span class="status-tag">LIVE on :8000</span>
+      <span class="status-tag">ONLINE (PAGES)</span>
     </div>
     <div class="tool-tile">
       <div>
-        <h3>🎬 Peter Griffin Reels Engine</h3>
-        <p>Kinetic 60FPS Shorts Generator</p>
+        <h3>🎬 Peter Griffin Engine</h3>
+        <p>5 Daily Kinetic Reels</p>
       </div>
-      <span class="status-tag">VIDEO RENDERED</span>
+      <span class="status-tag">5/5 RENDERED</span>
     </div>
     <div class="tool-tile">
       <div>
         <h3>🛰️ AI Career Job Radar</h3>
-        <p>Live Scraper & Automated CV Tailor</p>
+        <p>Scrapes Remote Feeds at 8 AM</p>
       </div>
-      <span class="status-tag">2 ACTIVE PACKETS</span>
+      <span class="status-tag">SCHEDULED</span>
+    </div>
+    <div class="tool-tile">
+      <div>
+        <h3>💼 Ready-To-Task Hub</h3>
+        <p>Outlier / Remotasks Copilot</p>
+      </div>
+      <span class="status-tag">PARTNERSHIP READY</span>
     </div>
   </div>
 
   <!-- LEFT: HIGH-CONVERTING TARGETS -->
   <div>
-    <div class="section-title">🏛️ Tier 1: Digital Marketing Agencies (Local B2B Resellers)</div>
+    <div class="section-title">🏛️ Tier 1: Digital Marketing Agencies (B2B Resellers)</div>
 
     <!-- Agency 1 -->
     <div class="card">
@@ -267,11 +290,11 @@
         </div>
       </div>
       <div class="target-desc">
-        Manages social media & digital marketing for dozens of local Nairobi restaurants, bakeries, salons, and retailers. Perfect white-label reseller for the 24/7 WhatsApp Ordering Agent.
+        Manages social media & marketing for dozens of Nairobi restaurants, bakeries, salons, and retail shops. Pitch the white-label 24/7 AI WhatsApp Ordering Agent.
       </div>
       <div class="card-footer">
-        <span class="deal-size">💰 KSh 15,000–25,000 / client + KSh 4,000/mo retainer</span>
-        <button class="action-btn" onclick="loadScript('agency', 'KWETU Marketing Team')">Load Custom Pitch ➤</button>
+        <span class="deal-size">💰 KSh 20,000 setup + KSh 5,000/mo retainer</span>
+        <button class="action-btn" onclick="loadScript('agency', 'KWETU Marketing Team')">Load Pitch ➤</button>
       </div>
     </div>
 
@@ -280,7 +303,7 @@
       <div class="card-head">
         <div>
           <div class="target-name">Growthpad Digital Consulting</div>
-          <div class="target-type">E-Commerce & Clinic Performance Agency • growthpad.africa</div>
+          <div class="target-type">E-Commerce & Clinic Performance • growthpad.africa</div>
         </div>
       </div>
       <div class="target-desc">
@@ -288,28 +311,28 @@
       </div>
       <div class="card-footer">
         <span class="deal-size">💰 KSh 25,000 setup / clinic</span>
-        <button class="action-btn" onclick="loadScript('agency', 'Growthpad Team')">Load Custom Pitch ➤</button>
+        <button class="action-btn" onclick="loadScript('agency', 'Growthpad Team')">Load Pitch ➤</button>
       </div>
     </div>
 
-    <!-- Agency 3 -->
-    <div class="card">
+    <div class="section-title" style="margin-top:28px;">🎙️ Tier 2: Tech & Remote Work Creators (Audience Monetization)</div>
+
+    <!-- Creator: UnspokenKe -->
+    <div class="card" style="border-color:#10b981; background:rgba(16, 185, 129, 0.05);">
       <div class="card-head">
         <div>
-          <div class="target-name">Agency Africa</div>
-          <div class="target-type">Social Commerce & Dropshipping • agencyafrica.com</div>
+          <div class="target-name">UnspokenKe (@un_spokenke) ⭐ NEW</div>
+          <div class="target-type">Remote Work & 'Ready-to-Task' Community Creator</div>
         </div>
       </div>
       <div class="target-desc">
-        Manages high-traffic Shopify & Instagram stores in East Africa. Ideal for automated abandoned-cart WhatsApp recovery with M-Pesa Till integration.
+        Virally educates Kenyan youth on Outlier, Remotasks, and 'Ready-to-Task' accounts. Partner to launch the AI Assessment Copilot that helps their followers pass qualification tests on their first try.
       </div>
       <div class="card-footer">
-        <span class="deal-size">💰 30% rev-share per client</span>
-        <button class="action-btn" onclick="loadScript('agency', 'Agency Africa')">Load Custom Pitch ➤</button>
+        <span class="deal-size">💰 50/50 split (KSh 2,500/sale) via M-Pesa</span>
+        <button class="action-btn" style="background:#10b981; color:#000;" onclick="loadScript('unspoken', 'UnspokenKe')">Load Pitch ➤</button>
       </div>
     </div>
-
-    <div class="section-title" style="margin-top:28px;">🎙️ Tier 2: Tech & Career Creators (Distribution Partners)</div>
 
     <!-- Creator 1 -->
     <div class="card">
@@ -320,11 +343,11 @@
         </div>
       </div>
       <div class="target-desc">
-        Reaches thousands of software engineering students and junior developers in Kenya. Partner to distribute the AI Job Radar with a 40% affiliate commission.
+        Reaches thousands of software engineering students and junior developers. Partner to promote the Autonomous AI Job Radar with a 40% affiliate commission.
       </div>
       <div class="card-footer">
         <span class="deal-size">💰 40% affiliate split per subscriber</span>
-        <button class="action-btn" onclick="loadScript('creator', 'Valentine')">Load Custom Pitch ➤</button>
+        <button class="action-btn" onclick="loadScript('creator', 'Valentine')">Load Pitch ➤</button>
       </div>
     </div>
 
@@ -337,28 +360,11 @@
         </div>
       </div>
       <div class="target-desc">
-        Huge following across TikTok and YouTube covering gadgets, AI tools, and startups. Pitch a breakdown of the Peter Griffin Viral AI Engine or Smart TV Debloater.
+        Huge following across TikTok and YouTube covering gadgets, AI tools, and startups. Pitch a breakdown of our automated kinetic shorts engine or smart TV debloater.
       </div>
       <div class="card-footer">
         <span class="deal-size">💰 Viral Traffic & Paid Review</span>
-        <button class="action-btn" onclick="loadScript('faceless', 'Nigel')">Load Custom Pitch ➤</button>
-      </div>
-    </div>
-
-    <!-- Creator 3 -->
-    <div class="card">
-      <div class="card-head">
-        <div>
-          <div class="target-name">Diglancers & TIMA UGC Network</div>
-          <div class="target-type">Creator Marketplace • diglancers.com</div>
-        </div>
-      </div>
-      <div class="target-desc">
-        Registry of hundreds of Kenyan TikTok and Instagram creators who need video editing and daily content batching. Sell batch generation using our kinetic shorts engine.
-      </div>
-      <div class="card-footer">
-        <span class="deal-size">💰 KSh 10,000 / 30-reel batch</span>
-        <button class="action-btn" onclick="loadScript('faceless', 'Creator Team')">Load Custom Pitch ➤</button>
+        <button class="action-btn" onclick="loadScript('faceless', 'Nigel')">Load Pitch ➤</button>
       </div>
     </div>
   </div>
@@ -367,8 +373,9 @@
   <div class="pitch-panel">
     <div class="tab-nav">
       <button class="tab-btn active" id="btnAgency" onclick="switchTab('agency')">B2B Agency Pitch</button>
-      <button class="tab-btn" id="btnCreator" onclick="switchTab('creator')">Job Radar Creator</button>
-      <button class="tab-btn" id="btnFaceless" onclick="switchTab('faceless')">Viral Reels Creator</button>
+      <button class="tab-btn" id="btnUnspoken" onclick="switchTab('unspoken')">Ready-to-Task (UnspokenKe)</button>
+      <button class="tab-btn" id="btnCreator" onclick="switchTab('creator')">Job Radar</button>
+      <button class="tab-btn" id="btnFaceless" onclick="switchTab('faceless')">Viral Reels</button>
     </div>
 
     <div class="pitch-box" id="pitchBox">
@@ -385,8 +392,8 @@ We built a 24/7 AI WhatsApp Ordering & Booking Agent tailored for Kenya:
 
 We are offering this as a white-label add-on for select agencies: you can charge your clients an extra KSh 15,000–25,000 setup + monthly retainer, and we handle 100% of the tech integration on a 50/50 split.
 
-I set up a live interactive demo you can test on your phone in 60 seconds:
-http://127.0.0.1:8000 (Sweet Delights Demo)
+Test the live interactive demo right on your phone in 60 seconds:
+https://djoe5.github.io/nairobi-client-demos/ai-whatsapp-bot/
 
 Open to a quick 5-minute chat this week?
     </div>
@@ -397,6 +404,9 @@ Open to a quick 5-minute chat this week?
 </div>
 
 <script>
+  let currentKey = 'agency';
+  let currentTarget = '[Target]';
+
   const scripts = {
     agency: `Hey [Target],
 
@@ -411,9 +421,31 @@ We built a 24/7 AI WhatsApp Ordering & Booking Agent tailored for Kenya:
 
 We are offering this as a white-label add-on for select agencies: you can charge your clients an extra KSh 15,000–25,000 setup + monthly retainer, and we handle 100% of the tech integration on a 50/50 split.
 
-I set up a live interactive demo you can test on your phone in 60 seconds.
+Test the live interactive demo right on your phone in 60 seconds:
+https://djoe5.github.io/nairobi-client-demos/ai-whatsapp-bot/
 
 Open to a quick 5-minute chat this week?`,
+
+    unspoken: `Mambo vipi [Target]! 🇰🇪
+
+Watched your recent reel on "Ready to task accounts" and Project Lumen — 100% on point, that's real game right there.
+
+You know how 80% of guys fail the onboarding assessments (reasoning & English tests) before they can even get their first task?
+
+As a software engineer, I built an AI Assessment Copilot & Screening Tool tailored specifically for Outlier and Remotasks:
+• Analyzes task onboarding instructions in real-time.
+• Guides candidates through qualification questions with 95%+ pass accuracy so their account becomes "Ready-to-Task" on day 1.
+• Includes an automated task queue notification bot so they never miss when high-paying batches drop.
+
+We can co-launch this to your audience:
+• Offer it as an assessment guide/tool at KSh 1,999 – 2,999.
+• Split all revenue 50/50 via M-Pesa.
+• Your followers actually get verified accounts without getting scammed.
+
+Live portfolio & tools demo:
+https://djoe5.github.io/nairobi-client-demos/
+
+Let's connect on WhatsApp if you're open to rolling this out together!`,
 
     creator: `Hey [Target],
 
@@ -430,7 +462,8 @@ We're launching an exclusive affiliate partnership for your audience:
 • Your community gets 25% off access.
 • You earn a 40% recurring commission on every subscriber.
 
-Would love to give you free VIP access to test it out and review the dashboard.
+Would love to give you free VIP access to test it out and review the dashboard:
+https://djoe5.github.io/nairobi-client-demos/job-radar/
 
 Let me know if you'd like a test login!`,
 
@@ -445,31 +478,43 @@ If you're looking to scale to 2-3 reels a day without spending 4 hours editing, 
 
 We can batch-produce 30 custom viral shorts a month for your channel on a simple revenue-share split or flat package.
 
+Sample render: short_peter_griffin_tv_glitch.mp4
+Portfolio: https://djoe5.github.io/nairobi-client-demos/
+
 Let's connect if you want to test a 3-video batch on your channel!`
   };
 
-  let currentTab = 'agency';
-
-  function switchTab(tab) {
-    currentTab = tab;
+  function switchTab(key) {
+    currentKey = key;
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    if (tab === 'agency') document.getElementById('btnAgency').classList.add('active');
-    if (tab === 'creator') document.getElementById('btnCreator').classList.add('active');
-    if (tab === 'faceless') document.getElementById('btnFaceless').classList.add('active');
-    document.getElementById('pitchBox').innerText = scripts[tab].replace('[Target]', 'Partner');
+    if (key === 'agency') document.getElementById('btnAgency').classList.add('active');
+    if (key === 'unspoken') document.getElementById('btnUnspoken').classList.add('active');
+    if (key === 'creator') document.getElementById('btnCreator').classList.add('active');
+    if (key === 'faceless') document.getElementById('btnFaceless').classList.add('active');
+
+    renderText();
   }
 
-  function loadScript(tab, name) {
-    switchTab(tab);
-    document.getElementById('pitchBox').innerText = scripts[tab].replace('[Target]', name);
+  function loadScript(key, targetName) {
+    currentTarget = targetName;
+    switchTab(key);
+  }
+
+  function renderText() {
+    let txt = scripts[currentKey] || '';
+    txt = txt.replace(/\[Target\]/g, currentTarget);
+    document.getElementById('pitchBox').innerText = txt;
   }
 
   function copyPitch() {
-    const text = document.getElementById('pitchBox').innerText;
-    navigator.clipboard.writeText(text);
-    const btn = document.querySelector('.copy-btn');
-    btn.innerText = '✅ Copied to Clipboard!';
-    setTimeout(() => btn.innerText = '📋 Copy Pitch Message', 2000);
+    const txt = document.getElementById('pitchBox').innerText;
+    navigator.clipboard.writeText(txt).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.innerText = '✅ Copied to Clipboard!';
+      setTimeout(() => {
+        btn.innerText = '📋 Copy Pitch Message';
+      }, 2000);
+    });
   }
 </script>
 
