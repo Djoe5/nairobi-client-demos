@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>24/7 AI WhatsApp Business Agent — Live Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      background: #111b21;
+      color: #e9edef;
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+    }
+    
+    /* Layout */
+    .app-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Left: Live WhatsApp Screen */
+    .chat-view {
+      flex: 1.4;
+      display: flex;
+      flex-direction: column;
+      background: #0b141a;
+      border-right: 1px solid #202c33;
+      position: relative;
+    }
+
+    /* Header */
+    .chat-header {
+      background: #202c33;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #222d34;
+      z-index: 10;
+    }
+    .profile-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .avatar-wrapper {
+      position: relative;
+    }
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #00a884;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #fff;
+      font-size: 20px;
+    }
+    .online-badge {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      background: #00a884;
+      border: 2px solid #202c33;
+      border-radius: 50%;
+    }
+    .name-title h2 {
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .verified-icon {
+      color: #00a884;
+      font-size: 14px;
+    }
+    .status-text {
+      font-size: 12px;
+      color: #8696a0;
+    }
+
+    /* Message Area */
+    .messages-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png') repeat;
+      background-blend-mode: overlay;
+      background-color: #0b141a;
+    }
+    
+    .date-divider {
+      align-self: center;
+      background: #182229;
+      color: #8696a0;
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 8px 0;
+    }
+
+    .bubble {
+      max-width: 75%;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.45;
+      position: relative;
+      word-break: break-word;
+      white-space: pre-wrap;
+    }
+    .bubble.bot {
+      background: #202c33;
+      color: #e9edef;
+      align-self: flex-start;
+      border-top-left-radius: 0;
+    }
+    .bubble.user {
+      background: #005c4b;
+      color: #e9edef;
+      align-self: flex-end;
+      border-top-right-radius: 0;
+    }
+    .time-stamp {
+      font-size: 10px;
+      color: #8696a0;
+      float: right;
+      margin-left: 12px;
+      margin-top: 4px;
+    }
+    .ticks {
+      color: #53bdeb;
+      margin-left: 3px;
+    }
+
+    /* Quick Reply Chips */
+    .quick-chips {
+      display: flex;
+      gap: 8px;
+      padding: 10px 18px;
+      background: #111b21;
+      overflow-x: auto;
+      border-top: 1px solid #202c33;
+    }
+    .chip {
+      background: #202c33;
+      border: 1px solid #00a884;
+      color: #00a884;
+      padding: 6px 14px;
+      border-radius: 16px;
+      font-size: 12.5px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .chip:hover {
+      background: #00a884;
+      color: #111b21;
+      font-weight: 600;
+    }
+
+    /* Input Footer */
+    .chat-footer {
+      background: #202c33;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .chat-input {
+      flex: 1;
+      background: #2a3942;
+      border: none;
+      outline: none;
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .send-btn {
+      background: #00a884;
+      border: none;
+      color: #111b21;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: transform 0.15s;
+    }
+    .send-btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* Right: Kitchen Orders & Revenue Dashboard */
+    .dashboard-view {
+      flex: 1;
+      background: #111b21;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 24px;
+      overflow-y: auto;
+    }
+    .dash-header {
+      border-bottom: 1px solid #202c33;
+      padding-bottom: 16px;
+      margin-bottom: 18px;
+    }
+    .dash-header h1 {
+      font-size: 18px;
+      color: #fff;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dash-header p {
+      font-size: 12.5px;
+      color: #8696a0;
+      margin-top: 4px;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: #1f2c34;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border-left: 4px solid #00a884;
+    }
+    .stat-card.revenue {
+      border-left-color: #f59e0b;
+    }
+    .stat-label {
+      font-size: 11.5px;
+      color: #8696a0;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .stat-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 4px;
+    }
+
+    /* Order Queue */
+    .order-card {
+      background: #1f2c34;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      border: 1px solid #2a3942;
+      animation: fadeIn 0.4s ease;
+    }
+    .order-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px dashed #2a3942;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+    }
+    .order-id {
+      font-weight: 700;
+      color: #00a884;
+      font-size: 13px;
+    }
+    .order-badge {
+      background: rgba(0, 168, 132, 0.2);
+      color: #00a884;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .order-item-list {
+      font-size: 12.5px;
+      color: #d1d7db;
+      line-height: 1.5;
+    }
+    .order-notes {
+      margin-top: 8px;
+      padding: 6px 10px;
+      background: #111b21;
+      border-radius: 6px;
+      font-size: 11.5px;
+      color: #eab308;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+  <!-- LEFT: WHATSAPP CHAT -->
+  <div class="chat-view">
+    <div class="chat-header">
+      <div class="profile-info">
+        <div class="avatar-wrapper">
+          <div class="avatar">🍰</div>
+          <div class="online-badge"></div>
+        </div>
+        <div class="name-title">
+          <h2>Sweet Delights Bakery <span class="verified-icon">✔</span></h2>
+          <div class="status-text">Online • 24/7 AI Kitchen Bot</div>
+        </div>
+      </div>
+      <div>
+        <span style="font-size:12px; color:#00a884; background:#111b21; padding:4px 10px; border-radius:12px;">Active Agent</span>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div class="messages-container" id="messagesContainer">
+      <div class="date-divider">Today</div>
+      
+      <div class="bubble bot">
+        Hello! 👋 Welcome to <strong>Sweet Delights Artisan Bakery & Cafe</strong>!
+        
+I'm your 24/7 automated ordering assistant. Our ovens run fresh every morning!
+        
+🎂 <strong>Custom Birthday & Event Cakes</strong>
+🥐 <strong>Gourmet Pastries & Cupcakes</strong>
+☕ <strong>Fresh Cold-Pressed Beverages</strong>
+        
+What would you like to order today? Type your order or tap below!
+        <span class="time-stamp">00:01</span>
+      </div>
+    </div>
+
+    <!-- Chips -->
+    <div class="quick-chips">
+      <div class="chip" onclick="quickSend('Show me the full menu')">📋 View Full Menu</div>
+      <div class="chip" onclick="quickSend('I want to order 1kg Black Forest Cake')">🎂 1kg Black Forest (KSh 2,400)</div>
+      <div class="chip" onclick="quickSend('I need a Box of Gourmet Cupcakes')">🧁 Cupcakes Box of 6 (KSh 1,200)</div>
+      <div class="chip" onclick="quickSend('Red Velvet Cream Cheese 1kg')">❤️ Red Velvet (KSh 2,800)</div>
+    </div>
+
+    <!-- Footer -->
+    <div class="chat-footer">
+      <input type="text" id="chatInput" class="chat-input" placeholder="Type a message (e.g. '1kg Black Forest cake with writing')..." onkeypress="handleKey(event)">
+      <button class="send-btn" onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+
+  <!-- RIGHT: LIVE BUSINESS KITCHEN SLIP DASHBOARD -->
+  <div class="dashboard-view">
+    <div class="dash-header">
+      <h1>👨‍🍳 Live Kitchen Order Dashboard</h1>
+      <p>Simulating what the bakery owner / kitchen team sees when orders hit via WhatsApp</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Active Orders</div>
+        <div class="stat-value" id="orderCount">3 Orders</div>
+      </div>
+      <div class="stat-card revenue">
+        <div class="stat-label">Today's Revenue</div>
+        <div class="stat-value" id="revenueCount">KSh 7,600</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px; color:#8696a0; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.5px;">Live Incoming Slips</h3>
+    
+    <div id="ordersList">
+      <!-- Demo Order 1 -->
+      <div class="order-card">
+        <div class="order-head">
+          <span class="order-id">ORD-9428B1</span>
+          <span class="order-badge">PREPARING</span>
+        </div>
+        <div class="order-item-list">
+          • 1x Black Forest Gateau (1kg) — KSh 2,400<br>
+          • 1x Glazed Cinnamon Rolls (Pack of 4) — KSh 950
+        </div>
+        <div class="order-notes">
+          ✍️ <strong>Writing:</strong> "Happy 24th Birthday Sarah!"<br>
+          📍 <strong>Delivery:</strong> Westlands, Mpaka Road • Today 2:00 PM<br>
+          📲 <strong>M-Pesa:</strong> TI83KM912A (Verified)
+        </div>
+      </div>
+
+      <!-- Demo Order 2 -->
+      <div class="order-card">
+        <div class="order-head">
+          <span class="order-id">ORD-7194A2</span>
+          <span class="order-badge">DISPATCH READY</span>
+        </div>
+        <div class="order-item-list">
+          • 1x Red Velvet Cream Cheese (1kg) — KSh 2,800<br>
+          • 1x Assorted Cupcakes Box — KSh 1,200
+        </div>
+        <div class="order-notes">
+          ✍️ <strong>Writing:</strong> "Congratulations Dr. Kevin"<br>
+          📍 <strong>Pickup:</strong> Kileleshwa Branch • 11:30 AM<br>
+          📲 <strong>M-Pesa:</strong> TI79LM440Z (Verified)
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const sessionId = 'demo_user_' + Math.random().toString(36).substring(7);
+
+  function getTimeStr() {
+    const d = new Date();
+    return d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
+  }
+
+  function appendMessage(sender, text) {
+    const container = document.getElementById('messagesContainer');
+    const bubble = document.createElement('div');
+    bubble.className = `bubble ${sender}`;
+    
+    // Format basic markdown
+    let formatted = text
+      .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
+      .replace(/_(.*?)_/g, '<em>$1</em>')
+      .replace(/`(.*?)`/g, '<code style="background:#111b21; padding:2px 4px; border-radius:4px;">$1</code>');
+
+    bubble.innerHTML = `${formatted} <span class="time-stamp">${getTimeStr()}${sender === 'user' ? ' <span class="ticks">✓✓</span>' : ''}</span>`;
+    container.appendChild(bubble);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  async function sendMessage(customText) {
+    const input = document.getElementById('chatInput');
+    const msg = customText || input.value.trim();
+    if (!msg) return;
+
+    if (!customText) input.value = '';
+    appendMessage('user', msg);
+
+    try {
+      const res = await fetch('http://127.0.0.1:8000/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          session_id: sessionId,
+          message: msg,
+          customer_name: 'Joseph Njuguna',
+          customer_phone: '+254712345678'
+        })
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setTimeout(() => {
+          appendMessage('bot', data.reply);
+          if (data.status === 'CONFIRMED') {
+            refreshOrders();
+          }
+        }, 500);
+      } else {
+        // Fallback simulation if local server not running yet
+        simulateBotReply(msg);
+      }
+    } catch (err) {
+      simulateBotReply(msg);
+    }
+  }
+
+  function quickSend(txt) {
+    sendMessage(txt);
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter') sendMessage();
+  }
+
+  // Client-side offline fallback simulation so demo always works immediately
+  let step = 0;
+  function simulateBotReply(msg) {
+    setTimeout(() => {
+      const m = msg.toLowerCase();
+      if (m.includes('black forest') || m.includes('cake') || m.includes('order')) {
+        appendMessage('bot', "Delicious choice! 😋 I've added:\n• *Black Forest Gateau (1kg)* (KSh 2,400)\n\n🛒 *Your Current Total:* KSh 2,400\n\nWould you like custom writing on the cake (e.g., _'Happy Birthday Joe'_) or no writing?");
+        step = 1;
+      } else if (step === 1) {
+        appendMessage('bot', `Got it! Custom text saved: *"${msg}"* ✍️\n\nNext, please provide:\n1. Is this for *Delivery* or *Store Pickup*?\n2. What time today or tomorrow?\n3. Delivery address?`);
+        step = 2;
+      } else if (step === 2) {
+        const ordId = 'ORD-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+        appendMessage('bot', `Awesome! Here is your complete order confirmation summary: 🧾\n\n📦 *Order ID:* \`${ordId}\`\n• 1x Black Forest Gateau (1kg) — KSh 2,400\n📍 *Delivery details:* ${msg}\n💰 *TOTAL DUE:* *KSh 2,400*\n\n📲 *M-PESA TILL PAYMENT:*\n• Till Number: *890214*\n• Business: *Sweet Delights Bakery*\n\nReply with your M-Pesa transaction code (e.g. *TI92K4M19X*) once paid! 🚀`);
+        step = 3;
+      } else if (step === 3 || m.includes('paid') || m.length >= 8) {
+        const ordId = 'ORD-KCH' + Math.floor(1000 + Math.random() * 9000);
+        appendMessage('bot', `🎉 *ORDER OFFICIALLY CONFIRMED!* 🎉\n\nThank you, *Joseph*!\n• Reference: \`${ordId}\`\n• Status: *In Kitchen Prep Queue* 👨‍🍳🎂\n\nOur kitchen has received your order slip. You will receive an SMS update once the rider is en route!`);
+        
+        // Add slip to dashboard
+        addSlipToDashboard(ordId, "1x Black Forest Gateau (1kg)", msg, "Kilimani / Westlands Delivery");
+        step = 0;
+      } else {
+        appendMessage('bot', "I'm active 24/7! 🍰 You can type:\n• *'1kg Black Forest Cake'*\n• *'Red Velvet Cake'*\n• *'Cupcakes Box'*");
+      }
+    }, 600);
+  }
+
+  function addSlipToDashboard(id, items, mpesa, delivery) {
+    const list = document.getElementById('ordersList');
+    const card = document.createElement('div');
+    card.className = 'order-card';
+    card.innerHTML = `
+      <div class="order-head">
+        <span class="order-id">${id}</span>
+        <span class="order-badge">NEW IN KITCHEN</span>
+      </div>
+      <div class="order-item-list">• ${items} — KSh 2,400</div>
+      <div class="order-notes">
+        ✍️ <strong>Customer:</strong> Joseph Njuguna<br>
+        📍 <strong>Location:</strong> ${delivery}<br>
+        📲 <strong>M-Pesa Code:</strong> ${mpesa.toUpperCase()}
+      </div>
+    `;
+    list.prepend(card);
+    document.getElementById('orderCount').innerText = "4 Orders";
+    document.getElementById('revenueCount').innerText = "KSh 10,000";
+  }
+
+  async function refreshOrders() {
+    try {
+      const res = await fetch('http://127.0.0.1:8000/api/orders');
+      if (res.ok) {
+        const orders = await res.json();
+        const list = document.getElementById('ordersList');
+        list.innerHTML = '';
+        let totalRev = 0;
+        orders.forEach(o => {
+          totalRev += o.total_amount || 0;
+          const card = document.createElement('div');
+          card.className = 'order-card';
+          card.innerHTML = `
+            <div class="order-head">
+              <span class="order-id">${o.id}</span>
+              <span class="order-badge">${o.status}</span>
+            </div>
+            <div class="order-item-list">${(o.items || []).map(i => `• ${i.quantity}x ${i.name} — KSh ${i.price}`).join('<br>')}</div>
+            <div class="order-notes">
+              ✍️ <strong>Customer:</strong> ${o.customer_name} (${o.customer_phone})<br>
+              📍 <strong>Delivery:</strong> ${o.delivery_info || 'Store Pickup'}<br>
+              📲 <strong>M-Pesa:</strong> ${o.mpesa_code}
+            </div>
+          `;
+          list.appendChild(card);
+        });
+        document.getElementById('orderCount').innerText = `${orders.length} Orders`;
+        document.getElementById('revenueCount').innerText = `KSh ${totalRev.toLocaleString()}`;
+      }
+    } catch(e) {}
+  }
+</script>
+
+</body>
+</html>

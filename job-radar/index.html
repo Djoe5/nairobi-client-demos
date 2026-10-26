@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Job Radar & Autonomous CV Application Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #1e293b;
+      border-bottom: 1px solid #334155;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo-area h1 {
+      font-size: 19px;
+      font-weight: 800;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge {
+      background: #0284c7;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+    .actions-bar {
+      display: flex;
+      gap: 12px;
+    }
+    .btn {
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-primary { background: #38bdf8; color: #0f172a; }
+    .btn-primary:hover { background: #7dd3fc; }
+    .btn-secondary { background: #334155; color: #f8fafc; }
+    .btn-secondary:hover { background: #475569; }
+
+    /* Main Container */
+    .container {
+      max-width: 1300px;
+      width: 100%;
+      margin: 28px auto;
+      padding: 0 24px;
+      display: flex;
+      gap: 24px;
+      flex: 1;
+    }
+
+    .jobs-column {
+      flex: 1.3;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .preview-column {
+      flex: 1;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      max-height: calc(100vh - 120px);
+      position: sticky;
+      top: 24px;
+    }
+
+    /* Job Card */
+    .job-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .job-card:hover {
+      border-color: #38bdf8;
+      transform: translateY(-2px);
+    }
+    .job-card.active {
+      border-color: #38bdf8;
+      background: #182635;
+    }
+    .job-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .job-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .match-pill {
+      background: rgba(34, 197, 94, 0.2);
+      color: #4ade80;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(34, 197, 94, 0.4);
+    }
+    .job-company {
+      font-size: 13.5px;
+      color: #94a3b8;
+      margin-bottom: 12px;
+    }
+    .job-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+    .meta-tag {
+      background: #0f172a;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #334155;
+    }
+
+    /* Status Badge */
+    .status-applied {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid #38bdf8;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* Preview Details */
+    .preview-header {
+      border-bottom: 1px solid #334155;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+    }
+    .preview-header h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .preview-content {
+      flex: 1;
+      overflow-y: auto;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+    .code-block {
+      background: #0f172a;
+      border: 1px solid #334155;
+      padding: 14px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      white-space: pre-wrap;
+      color: #e2e8f0;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-area">
+    <h1>🛰️ Autonomous AI Job Radar <span class="badge">Active Scanner</span></h1>
+  </div>
+  <div class="actions-bar">
+    <button class="btn btn-secondary" onclick="alert('Auto-scanner is set to check daily at 8:00 AM EAT')">⏰ Daily 8:00 AM Active</button>
+    <button class="btn btn-primary" onclick="alert('Applications dispatched! Custom cover letters and packets saved in workspace.')">🚀 1-Click Dispatch All</button>
+  </div>
+</header>
+
+<div class="container">
+  <!-- Left: Opportunity Feed -->
+  <div class="jobs-column" id="jobsList">
+    <!-- Opportunity 1 -->
+    <div class="job-card active" onclick="selectJob(0)">
+      <div class="job-top">
+        <div class="job-title">Full Stack Python / React Engineer (Remote)</div>
+        <span class="match-pill">90% Match</span>
+      </div>
+      <div class="job-company">Veloce Technologies • Remote (Global)</div>
+      <div class="job-meta">
+        <span class="meta-tag">💰 $65,000 - $85,000 / yr</span>
+        <span class="meta-tag">⚡ Full Stack / FastAPI</span>
+        <span class="status-applied">DISPATCHED & PACKET READY</span>
+      </div>
+    </div>
+
+    <!-- Opportunity 2 -->
+    <div class="job-card" onclick="selectJob(1)">
+      <div class="job-top">
+        <div class="job-title">AI Automation & Backend Developer</div>
+        <span class="match-pill">95% Match</span>
+      </div>
+      <div class="job-company">NovaStream AI • Remote (Worldwide)</div>
+      <div class="job-meta">
+        <span class="meta-tag">💰 $40 - $60 / hour</span>
+        <span class="meta-tag">🤖 Agentic Pipelines / Node.js</span>
+        <span class="status-applied">DISPATCHED & PACKET READY</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Tailored Application Packet Preview -->
+  <div class="preview-column">
+    <div class="preview-header">
+      <h2 id="previewTitle">Application Packet — Veloce Technologies</h2>
+      <p style="font-size:12px; color:#94a3b8; margin-top:4px;">Candidate: <strong>Joseph Njuguna</strong> (Nairobi, Kenya / Remote)</p>
+    </div>
+    <div class="preview-content">
+      <h4 style="color:#38bdf8; margin-bottom:6px;">Custom Tailored Cover Letter</h4>
+      <div class="code-block" id="coverLetterText">
+Dear Veloce Technologies Hiring Team,
+
+I am writing to express my strong interest in the Full Stack Python / React Engineer position. With a solid background building production-grade web applications, automated agentic pipelines, and scalable APIs using Python, JavaScript, FastAPI, and Node.js, I am confident in delivering immediate value to your engineering team.
+
+Key highlights relevant to Veloce Technologies:
+• Engineered full-stack applications with FastAPI, Node.js, and modern frontends with seamless webhook & payment integrations.
+• Built end-to-end autonomous scraping and data processing architectures with Puppeteer and Python, cutting manual operational cycles by over 80%.
+• Integrated AI/LLM models for conversational automation, structured data extraction, and real-time processing.
+
+I thrive in fast-paced, asynchronous remote environments and take pride in shipping robust, well-documented code. I would welcome the opportunity to discuss how my skill set aligns with your upcoming roadmap.
+
+Best regards,
+Joseph Njuguna
+joenj@example.com | Nairobi, Kenya
+Portfolio / GitHub: https://github.com/joenj
+      </div>
+
+      <h4 style="color:#38bdf8; margin-top:16px; margin-bottom:6px;">Targeted Resume Highlights</h4>
+      <ul style="padding-left:18px; font-size:12.5px; line-height:1.5;">
+        <li>Demonstrated proficiency in Python, FastAPI, and API system design matching Veloce Technologies' tech stack.</li>
+        <li>Experienced in asynchronous task execution, automated browser testing, and microservice integration.</li>
+        <li>Committed to clean documentation, code reviews, and rapid feature deployment in remote-first teams.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  const jobsData = [
+    {
+      company: "Veloce Technologies",
+      title: "Full Stack Python / React Engineer",
+      cover: `Dear Veloce Technologies Hiring Team,\n\nI am writing to express my strong interest in the Full Stack Python / React Engineer position. With a solid background building production-grade web applications, automated agentic pipelines, and scalable APIs using Python, JavaScript, FastAPI, and Node.js, I am confident in delivering immediate value to your engineering team.\n\nKey highlights relevant to Veloce Technologies:\n• Engineered full-stack applications with FastAPI, Node.js, and modern frontends with seamless webhook & payment integrations.\n• Built end-to-end autonomous scraping and data processing architectures with Puppeteer and Python, cutting manual operational cycles by over 80%.\n• Integrated AI/LLM models for conversational automation, structured data extraction, and real-time processing.\n\nBest regards,\nJoseph Njuguna\njoenj@example.com`
+    },
+    {
+      company: "NovaStream AI",
+      title: "AI Automation & Backend Developer",
+      cover: `Dear NovaStream AI Hiring Team,\n\nI am thrilled to apply for the AI Automation & Backend Developer position. Having designed and shipped automated scraper architectures, WhatsApp bot workflows, and LLM-powered agent pipelines, I know firsthand what it takes to build resilient AI automation at scale.\n\nWhy I fit this role:\n• Architected multi-step automation engines using Python and Node.js that interface with internal APIs, Puppeteer, and messaging protocols.\n• Integrated modern generative AI models (Gemini, Claude) for dynamic prompt pipelines and structured data extraction.\n• Proven ability to work asynchronously and take ownership of critical feature delivery.\n\nBest regards,\nJoseph Njuguna\njoenj@example.com`
+    }
+  ];
+
+  function selectJob(idx) {
+    const cards = document.querySelectorAll('.job-card');
+    cards.forEach((c, i) => c.classList.toggle('active', i === idx));
+    const data = jobsData[idx];
+    document.getElementById('previewTitle').innerText = `Application Packet — ${data.company}`;
+    document.getElementById('coverLetterText').innerText = data.cover;
+  }
+</script>
+
+</body>
+</html>
